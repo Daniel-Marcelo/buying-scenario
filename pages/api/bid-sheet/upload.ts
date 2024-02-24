@@ -36,6 +36,16 @@ export default async function upload(
     fs.createReadStream((file as any).filepath)
       .pipe(csvParser())
       .on("data", (rawData) => {
+        if (
+          !rawData.minimumVolume ||
+          !rawData.maximumVolume ||
+          !rawData.Category ||
+          !rawData.Item ||
+          !rawData.Supplier
+        ) {
+          res.status(500).json({ error: "Error reading file" });
+          return;
+        }
         const data = {
           id: uuidv4(),
           supplier: rawData.Supplier,
@@ -60,5 +70,4 @@ export default async function upload(
         res.json({ error: "Error reading the CSV file" });
       });
   });
-  res.status(500).json({ error: "Error reading file" });
 }
