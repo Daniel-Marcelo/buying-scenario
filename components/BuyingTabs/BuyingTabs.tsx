@@ -129,6 +129,7 @@ export const BuyingTabs = () => {
         <ScenarioTab
           rowData={rowData}
           setRowData={setRowData}
+          selectedRow={selectedRow}
           setSelectedRow={setSelectedRow}
           bidSheetRows={bidSheetRows}
           baselineRows={baselineRows}

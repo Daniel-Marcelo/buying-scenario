@@ -3,6 +3,7 @@ import { IncomingForm } from "formidable";
 // import { promises as fs } from "fs";
 import fs from "fs";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { v4 as uuidv4 } from "uuid";
 
 export const config = {
   api: {
@@ -36,6 +37,7 @@ export default async function upload(
       .pipe(csvParser())
       .on("data", (rawData) => {
         const data = {
+          id: uuidv4(),
           supplier: rawData.Supplier,
           category: rawData.Category,
           item: rawData.Item,

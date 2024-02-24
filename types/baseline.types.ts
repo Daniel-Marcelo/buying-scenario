@@ -1,4 +1,5 @@
 export interface BaselineRow {
+  id: string;
   category: string;
   item: string;
   supplier: string;

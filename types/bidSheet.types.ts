@@ -1,4 +1,5 @@
 export interface BidSheetRow {
+  id: string;
   supplier: string;
   category: string;
   item: string;

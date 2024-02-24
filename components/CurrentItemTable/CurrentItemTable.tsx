@@ -10,6 +10,7 @@ import { CurrentItem } from "@/types/currentItem.types";
 import { TextField } from "@mui/material";
 import uniq from "lodash/uniq";
 import numeral from "numeral";
+import { v4 as uuidv4 } from "uuid";
 
 export const CurrentItemTable = ({
   bidSheetRows,
@@ -17,11 +18,13 @@ export const CurrentItemTable = ({
   setSelectedRow,
   rowData,
   setRowData,
+  selectedRow,
 }: {
   rowData: CurrentItem[];
   setRowData: (v: CurrentItem[]) => void;
   bidSheetRows: BidSheetRow[];
   baselineRows: BaselineRow[];
+  selectedRow?: CurrentItem;
   setSelectedRow: (v: CurrentItem | undefined) => void;
 }) => {
   const [name, setName] = useState("");
@@ -45,6 +48,7 @@ export const CurrentItemTable = ({
           .filter((row) => row.category === category)
           .map((row) => row.item)
       ).map((item) => ({
+        id: uuidv4(),
         category,
         item,
         totalVolume: baselineRows
@@ -65,6 +69,12 @@ export const CurrentItemTable = ({
   return (
     <div className="ag-theme-quartz" style={{ width: "100%", height: "100%" }}>
       <AgGridReact
+        rowClassRules={{}}
+        getRowStyle={(params) => {
+          if (params.node.data?.id === selectedRow?.id) {
+            return { background: "lightblue" };
+          }
+        }}
         rowData={rowData}
         columnDefs={colDefs}
         onRowClicked={(e) => setSelectedRow(e.data)}

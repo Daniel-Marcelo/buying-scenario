@@ -1,7 +1,7 @@
-import { CurrentItem } from '@/types/currentItem.types';
-import { x } from '@xstyled/styled-components';
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import { useState } from 'react';
+import { CurrentItem } from "@/types/currentItem.types";
+import { x } from "@xstyled/styled-components";
+import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
+import { useState } from "react";
 import {
   Divider,
   FormControl,
@@ -10,20 +10,20 @@ import {
   Select,
   SelectChangeEvent,
   TextField,
-} from '@mui/material';
-import range from 'lodash/range';
-import { BidSheetRow } from '@/types/bidSheet.types';
-import uniq from 'lodash/uniq';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import { Unstable_NumberInput as NumberInput } from '@mui/base/Unstable_NumberInput';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { set } from 'lodash';
-import { CalculatedValues } from '../CalculatedValues/CalculatedValues';
+} from "@mui/material";
+import range from "lodash/range";
+import { BidSheetRow } from "@/types/bidSheet.types";
+import uniq from "lodash/uniq";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import { Unstable_NumberInput as NumberInput } from "@mui/base/Unstable_NumberInput";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { set } from "lodash";
+import { CalculatedValues } from "../CalculatedValues/CalculatedValues";
 
 export const SelectedItem = ({
   selectedRow,
@@ -37,23 +37,20 @@ export const SelectedItem = ({
   bidSheetRows: BidSheetRow[];
 }) => {
   const [numberOfSuppliers, setNumberOfSuppliers] = useState<number>(1);
-  const [supplierIdToShare, setSupplierIdToShare] = useState<Record<string, string>>({});
+  const [supplierIdToShare, setSupplierIdToShare] = useState<
+    Record<string, string>
+  >({});
 
-  const [supplierIdToSupplierName, setSupplierIdToSupplierName] = useState<Record<string, string>>(
-    {},
-  );
+  const [supplierIdToSupplierName, setSupplierIdToSupplierName] = useState<
+    Record<string, string>
+  >({});
 
   const bidSheetSuppliers = uniq(bidSheetRows.map((row) => row.supplier));
 
   return (
-    <x.div mt="9rem">
+    <x.div mt="1rem">
       {selectedRow && (
         <>
-          <x.div>category: {selectedRow?.category}</x.div>
-          <x.div>item: {selectedRow?.item}</x.div>
-          <x.div>totalVolume: {selectedRow?.totalVolume}</x.div>
-          <x.div>currentSpend: {selectedRow?.currentSpend}</x.div>
-
           <x.div mt="1rem">
             <x.div mt="1rem" display="flex" flexDirection="column" gap=".5rem">
               {range(numberOfSuppliers).map((supplierId) => (
@@ -79,10 +76,12 @@ export const SelectedItem = ({
 
                   <FormControl
                     sx={{
-                      width: '200px',
+                      width: "200px",
                     }}
                   >
-                    <InputLabel id="supplier-label">Select a supplier</InputLabel>
+                    <InputLabel id="supplier-label">
+                      Select a supplier
+                    </InputLabel>
 
                     <Select
                       labelId="supplier-label"
@@ -95,7 +94,10 @@ export const SelectedItem = ({
                       }
                     >
                       {bidSheetSuppliers.map((supplier) => (
-                        <MenuItem key={`${supplierId}-supplier`} value={supplier}>
+                        <MenuItem
+                          key={`${supplierId}-supplier`}
+                          value={supplier}
+                        >
                           {supplier}
                         </MenuItem>
                       ))}
@@ -103,7 +105,7 @@ export const SelectedItem = ({
                   </FormControl>
                   <TextField
                     sx={{
-                      width: '200px',
+                      width: "200px",
                     }}
                     label="Volume Share"
                     type="number"
@@ -141,7 +143,12 @@ export const SelectedItem = ({
               Add a supplier
             </x.div>
 
-            <Divider sx={{ my: '1.5rem' }} orientation="horizontal" variant="middle" flexItem />
+            <Divider
+              sx={{ my: "1.5rem" }}
+              orientation="horizontal"
+              variant="middle"
+              flexItem
+            />
           </x.div>
         </>
       )}
