@@ -21,14 +21,6 @@ const GridExample = () => {};
 export default function Home() {
   const [rowData, setRowData] = useState<CurrentItem[]>([]); // [1
 
-  const bidSheet = useQuery<BidSheetRow[]>({
-    queryKey: ["bidSheet"],
-    queryFn: async () => {
-      const response = await axios.get("/api/bid-sheet");
-      return response.data;
-    },
-  });
-
   const baseline = useQuery<BaselineRow[]>({
     queryKey: ["baseline"],
     queryFn: async () => {
