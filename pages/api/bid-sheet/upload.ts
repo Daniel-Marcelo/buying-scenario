@@ -37,8 +37,8 @@ export default async function upload(
       .pipe(csvParser())
       .on("data", (rawData) => {
         if (
-          !rawData.minimumVolume ||
-          !rawData.maximumVolume ||
+          // !rawData.minimumVolume ||
+          !rawData["Maximum Volume"] ||
           !rawData.Category ||
           !rawData.Item ||
           !rawData.Supplier
