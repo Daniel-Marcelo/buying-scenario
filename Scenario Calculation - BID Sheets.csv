@@ -1,0 +1,46 @@
+Supplier,Category,Item,Minimum Volume,Maximum Volume,Price/1000
+A,Fry Cartons,1.1 Oz,1%,33%,$ 10.00
+A,Fry Cartons,1.1 Oz,34%,66%,$ 9.50
+A,Fry Cartons,1.1 Oz,67%,100%,$ 9.00
+A,Fry Cartons,4 Oz,1%,33%,$ 12.00
+A,Fry Cartons,4 Oz,34%,66%,$ 11.50
+A,Fry Cartons,4 Oz,67%,100%,$ 11.00
+A,Fry Cartons,6 Oz,1%,33%,$ 13.00
+A,Fry Cartons,6 Oz,34%,66%,$ 12.50
+A,Fry Cartons,6 Oz,67%,100%,$ 12.00
+A,Nugget Cartons,4 pcs,1%,33%,$ 12.00
+A,Nugget Cartons,4 pcs,34%,66%,$ 11.50
+A,Nugget Cartons,4 pcs,67%,100%,$ 11.00
+A,Nugget Cartons,6 pcs,1%,33%,$ 14.00
+A,Nugget Cartons,6 pcs,34%,66%,$ 13.50
+A,Nugget Cartons,6 pcs,67%,100%,$ 13.00
+A,Nugget Cartons,10 pcs,1%,33%,$ 15.00
+A,Nugget Cartons,10 pcs,34%,66%,$ 14.50
+A,Nugget Cartons,10 pcs,67%,100%,$ 14.00
+B,Fry Cartons,1.1 Oz,1%,33%,$ 11.00
+B,Fry Cartons,1.1 Oz,34%,66%,$ 10.50
+B,Fry Cartons,1.1 Oz,67%,100%,$ 10.00
+B,Fry Cartons,4 Oz,1%,33%,$ 13.00
+B,Fry Cartons,4 Oz,34%,66%,$ 12.50
+B,Fry Cartons,4 Oz,67%,100%,$ 12.00
+B,Fry Cartons,6 Oz,1%,33%,$ 14.00
+B,Fry Cartons,6 Oz,34%,66%,$ 13.50
+B,Fry Cartons,6 Oz,67%,100%,$ 13.00
+B,Nugget Cartons,4 pcs,1%,33%,$ 11.00
+B,Nugget Cartons,4 pcs,34%,66%,$ 10.50
+B,Nugget Cartons,4 pcs,67%,100%,$ 10.00
+B,Nugget Cartons,6 pcs,1%,33%,$ 13.00
+B,Nugget Cartons,6 pcs,34%,66%,$ 12.50
+B,Nugget Cartons,6 pcs,67%,100%,$ 12.00
+B,Nugget Cartons,10 pcs,1%,33%,$ 14.00
+B,Nugget Cartons,10 pcs,34%,66%,$ 13.50
+B,Nugget Cartons,10 pcs,67%,100%,$ 13.00
+C,Nugget Cartons,4 pcs,1%,33%,
+C,Nugget Cartons,4 pcs,34%,66%,$ 9.00
+C,Nugget Cartons,4 pcs,67%,100%,$ 8.50
+C,Nugget Cartons,6 pcs,1%,33%,
+C,Nugget Cartons,6 pcs,34%,66%,$ 11.00
+C,Nugget Cartons,6 pcs,67%,100%,$ 10.50
+C,Nugget Cartons,10 pcs,1%,33%,
+C,Nugget Cartons,10 pcs,34%,66%,$ 12.00
+C,Nugget Cartons,10 pcs,67%,100%,$ 11.50

@@ -1,0 +1,13 @@
+Category,Item,Supplier,Volume Share,Price/1000,Volume,Spend
+Fry Cartons,1.1 oz,A,52%,$ 9.30,"52,000,000","$ 483,600"
+Fry Cartons,1.1 oz,B,48%,$ 9.70,"48,000,000","$ 465,600"
+Fry Cartons,4 oz,A,52%,$ 11.30,"52,000,000","$ 587,600"
+Fry Cartons,4 oz,B,48%,$ 11.70,"48,000,000","$ 561,600"
+Fry Cartons,6 oz,A,52%,$ 13.30,"52,000,000","$ 691,600"
+Fry Cartons,6 oz,B,48%,$ 13.70,"48,000,000","$ 657,600"
+Nugget Cartons,4 pcs,A,30%,$ 11.30,"300,000,000","$ 3,390,000"
+Nugget Cartons,4 pcs,B,70%,$ 11.70,"300,000,000","$ 3,510,000"
+Nugget Cartons,6 pcs,A,110%,$ 13.30,"300,000,000","$ 3,990,000"
+Nugget Cartons,6 pcs,B,150%,$ 13.70,"300,000,000","$ 4,110,000"
+Nugget Cartons,10 pcs,A,190%,$ 15.30,"300,000,000","$ 4,590,000"
+Nugget Cartons,10 pcs,B,230%,$ 15.70,"300,000,000","$ 4,710,000"
