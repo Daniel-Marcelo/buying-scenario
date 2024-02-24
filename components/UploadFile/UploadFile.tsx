@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { Button } from "@mui/material";
+import { useRef, useState } from "react";
 
 export const UploadForm = () => {
   const [file, setFile] = useState<File>();
+  const ref = useRef<HTMLInputElement>(null);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     debugger;
@@ -10,10 +12,10 @@ export const UploadForm = () => {
 
     try {
       const data = new FormData();
-      data.set('file', file);
+      data.set("file", file);
 
-      const res = await fetch('api/upload', {
-        method: 'POST',
+      const res = await fetch("api/upload", {
+        method: "POST",
         body: data,
       });
       // handle the error
@@ -26,10 +28,24 @@ export const UploadForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input type="file" name="file" onChange={(e) => setFile(e.target.files?.[0])} />
-      <button type="submit" value="Upload">
+      <Button
+        type="submit"
+        value="Upload"
+        variant="contained"
+        onClick={() => ref.current?.click()}
+      >
+        Select File
+      </Button>
+      <input
+        hidden
+        ref={ref}
+        type="file"
+        name="file"
+        onChange={(e) => setFile(e.target.files?.[0])}
+      />
+      <Button type="submit" value="Upload" variant="contained">
         Submit
-      </button>
+      </Button>
     </form>
   );
 };
