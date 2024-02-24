@@ -12,6 +12,7 @@ import { BidSheetRow } from "@/types/bidSheet.types";
 import { CurrentItemTable } from "../CurrentItemTable/CurrentItemTable";
 import { CurrentItem } from "@/types/currentItem.types";
 import { ScenarioTab } from "../ScenarioTab/ScenarioTab";
+import { Tooltip } from "@mui/material";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -81,6 +82,8 @@ export const BuyingTabs = () => {
     setValue(newValue);
   };
 
+  const scenarioDisabled = !bidSheetRows.length || !baselineRows.length;
+  console.log("scenarioDisabled", scenarioDisabled);
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -91,19 +94,35 @@ export const BuyingTabs = () => {
         >
           <Tab label="BidSheet" {...a11yProps(0)} />
           <Tab label="Baseline" {...a11yProps(1)} />
-          <Tab label="Scenario" {...a11yProps(2)} />
+          {scenarioDisabled ? (
+            <Tooltip
+              title="Please upload a bid sheet and baseline to view the scenario tab"
+              placement="top"
+            >
+              <span>
+                <Tab
+                  onClick={(e) => e.preventDefault()}
+                  label={<span>Scenario</span>}
+                  {...a11yProps(2)}
+                  disabled
+                />{" "}
+              </span>
+            </Tooltip>
+          ) : (
+            <Tab label="Scenario" {...a11yProps(2)} />
+          )}
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         <BidSheetTab
           onUploadFile={(file) => uploadBidSheetMutation.mutate(file)}
-          bidSheetRows={uploadBidSheetMutation.data ?? []}
+          bidSheetRows={bidSheetRows}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <BaselineTab
           onUploadFile={(file) => uploadBaselineMutation.mutate(file)}
-          baselineRows={uploadBaselineMutation.data ?? []}
+          baselineRows={baselineRows}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
