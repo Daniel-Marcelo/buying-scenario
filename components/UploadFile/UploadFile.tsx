@@ -22,6 +22,7 @@ export const UploadForm = ({ onSelectFile }: UploadFormProps) => {
         ref={ref}
         type="file"
         name="file"
+        accept=".csv"
         onChange={(e) => {
           const file = e.target.files?.[0];
           if (!file) return;
