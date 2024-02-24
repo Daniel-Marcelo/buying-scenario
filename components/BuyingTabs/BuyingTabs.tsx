@@ -12,7 +12,8 @@ import { BidSheetRow } from "@/types/bidSheet.types";
 import { CurrentItemTable } from "../CurrentItemTable/CurrentItemTable";
 import { CurrentItem } from "@/types/currentItem.types";
 import { ScenarioTab } from "../ScenarioTab/ScenarioTab";
-import { Tooltip } from "@mui/material";
+import { Snackbar, Tooltip } from "@mui/material";
+import { toast } from "react-toastify";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,7 +50,7 @@ export const BuyingTabs = () => {
   const [baselineRows, setBaselineRows] = React.useState<BaselineRow[]>([]);
   const [bidSheetRows, setBidSheetRows] = React.useState<BidSheetRow[]>([]);
   const [selectedRow, setSelectedRow] = React.useState<CurrentItem>();
-
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
   const uploadBaselineMutation = useMutation({
     mutationFn: async (file: File) => {
       const data = new FormData();
@@ -62,6 +63,10 @@ export const BuyingTabs = () => {
       setBaselineRows(response.data.results);
       return response.data.results;
     },
+    onError: () =>
+      toast("Failed to upload baseline sheet! Please try again.", {
+        type: "error",
+      }),
   });
 
   const uploadBidSheetMutation = useMutation({
@@ -76,6 +81,10 @@ export const BuyingTabs = () => {
       setBidSheetRows(response.data.results);
       return response.data.results;
     },
+    onError: () =>
+      toast("Failed to upload bid sheet! Please try again.", {
+        type: "error",
+      }),
   });
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

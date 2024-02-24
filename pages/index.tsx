@@ -2,8 +2,9 @@ import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the 
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import { x } from "@xstyled/styled-components";
 import { BuyingTabs } from "@/components/BuyingTabs/BuyingTabs";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const MainPage = () => {};
 export default function Home() {
   return (
     <x.div h="100vh" p="1.5rem">
@@ -15,6 +16,18 @@ export default function Home() {
         bidSheetRows={bidSheet.data ?? []}
         selectedRow={selectedRow}
       /> */}
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </x.div>
   );
 }

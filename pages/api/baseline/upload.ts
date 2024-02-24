@@ -60,4 +60,5 @@ export default async function upload(
         res.json({ error: "Error reading the CSV file" });
       });
   });
+  res.status(500).json({ error: "Error reading file" });
 }
