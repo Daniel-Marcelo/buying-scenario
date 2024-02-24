@@ -9,6 +9,9 @@ import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { BaselineRow } from "@/types/baseline.types";
 import { BidSheetRow } from "@/types/bidSheet.types";
+import { CurrentItemTable } from "../CurrentItemTable/CurrentItemTable";
+import { CurrentItem } from "@/types/currentItem.types";
+import { ScenarioTab } from "../ScenarioTab/ScenarioTab";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -41,6 +44,10 @@ function a11yProps(index: number) {
 
 export const BuyingTabs = () => {
   const [value, setValue] = React.useState(0);
+  const [rowData, setRowData] = React.useState<CurrentItem[]>([]);
+  const [baselineRows, setBaselineRows] = React.useState<BaselineRow[]>([]);
+  const [bidSheetRows, setBidSheetRows] = React.useState<BidSheetRow[]>([]);
+  const [selectedRow, setSelectedRow] = React.useState<CurrentItem>();
 
   const uploadBaselineMutation = useMutation({
     mutationFn: async (file: File) => {
@@ -51,6 +58,7 @@ export const BuyingTabs = () => {
         "/api/baseline/upload",
         data
       );
+      setBaselineRows(response.data.results);
       return response.data.results;
     },
   });
@@ -64,6 +72,7 @@ export const BuyingTabs = () => {
         "/api/bid-sheet/upload",
         data
       );
+      setBidSheetRows(response.data.results);
       return response.data.results;
     },
   });
@@ -82,7 +91,7 @@ export const BuyingTabs = () => {
         >
           <Tab label="BidSheet" {...a11yProps(0)} />
           <Tab label="Baseline" {...a11yProps(1)} />
-          {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
+          <Tab label="Scenario" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -97,9 +106,15 @@ export const BuyingTabs = () => {
           baselineRows={uploadBaselineMutation.data ?? []}
         />
       </CustomTabPanel>
-      {/* <CustomTabPanel value={value} index={2}>
-        Item Three
-      </CustomTabPanel> */}
+      <CustomTabPanel value={value} index={2}>
+        <ScenarioTab
+          rowData={rowData}
+          setRowData={setRowData}
+          setSelectedRow={setSelectedRow}
+          bidSheetRows={bidSheetRows}
+          baselineRows={baselineRows}
+        />
+      </CustomTabPanel>
     </Box>
   );
 };
